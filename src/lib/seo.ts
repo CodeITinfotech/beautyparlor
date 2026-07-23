@@ -3,7 +3,7 @@ import { businessInfo } from '@/data/business';
 export const siteConfig = {
   name: businessInfo.name,
   description: businessInfo.description,
-  url: 'https://dazzlebeauty.com',
+  url: 'https://codeitinfotech.github.io/dazzle-beauty',
   ogImage: '/og-image.jpg',
 };
 
@@ -11,7 +11,7 @@ export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'BeautySalon',
   name: businessInfo.name,
-  image: 'https://dazzlebeauty.com/og-image.jpg',
+  image: 'https://codeitinfotech.github.io/dazzle-beauty/og-image.jpg',
   description: businessInfo.description,
   address: {
     '@type': 'PostalAddress',
@@ -28,7 +28,7 @@ export const localBusinessSchema = {
   },
   telephone: businessInfo.phone,
   email: businessInfo.email,
-  url: 'https://dazzlebeauty.com',
+  url: 'https://codeitinfotech.github.io/dazzle-beauty',
   priceRange: '₹₹',
   openingHoursSpecification: Object.entries(businessInfo.hours).map(([day, hours]) => ({
     '@type': 'OpeningHoursSpecification',
