@@ -4,12 +4,18 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { galleryImages } from '@/data/testimonials';
 import { ArrowRight } from 'lucide-react';
 
-export function GalleryPreview() {
-  const featuredImages = galleryImages.slice(0, 6);
+const galleryImages = [
+  { id: 1, src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80', alt: 'Bridal Makeup Look' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80', alt: 'Professional Makeup' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80', alt: 'Party Makeup' },
+  { id: 4, src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80', alt: 'Hair Styling' },
+  { id: 5, src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80', alt: 'Nail Art Design' },
+  { id: 6, src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80', alt: 'Facial Treatment' },
+];
 
+export function GalleryPreview() {
   return (
     <section className="section-padding bg-[#333333]">
       <div className="container-custom">
@@ -20,7 +26,7 @@ export function GalleryPreview() {
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {featuredImages.map((image, index) => (
+          {galleryImages.map((image, index) => (
             <motion.div
               key={image.id}
               className={`relative overflow-hidden rounded-xl ${
@@ -32,10 +38,13 @@ export function GalleryPreview() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="aspect-square bg-gradient-to-br from-[#C58A73] to-[#D6B25E] flex items-center justify-center">
-                <span className="text-white/50 font-semibold">{image.alt}</span>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                className="w-full h-full object-cover"
+                style={{ aspectRatio: index === 0 || index === 3 ? '1/2' : '1/1' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-4">
                 <span className="text-white font-medium">{image.alt}</span>
               </div>
             </motion.div>

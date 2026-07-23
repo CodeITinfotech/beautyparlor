@@ -52,12 +52,10 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHero, setIsHero] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      setIsHero(window.scrollY < 100);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -72,20 +70,14 @@ export function Navbar() {
     }
   }, [isOpen]);
 
-  const navColor = isScrolled || !isHero;
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        navColor
-          ? 'bg-white/98 shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 bg-white shadow-lg`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 z-[9999]">
-            <Logo isScrolled={navColor} />
+            <Logo isScrolled={true} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -94,9 +86,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-medium transition-colors hover:text-[#D6B25E] ${
-                  navColor ? 'text-[#333333]' : 'text-white'
-                }`}
+                className="font-medium transition-colors hover:text-[#D6B25E] text-[#333333]"
               >
                 {link.label}
               </Link>
@@ -105,7 +95,7 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-4">
             <a href={`tel:${businessInfo.phone}`}>
-              <Button variant={navColor ? 'outline' : 'secondary'} size="sm">
+              <Button variant="outline" size="sm">
                 Call Now
               </Button>
             </a>
@@ -113,9 +103,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button - Always visible */}
           <button
-            className={`lg:hidden p-2 z-[9999] relative ${
-              navColor ? 'text-[#333333]' : 'text-white'
-            }`}
+            className="lg:hidden p-2 z-[9999] relative text-[#333333]"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             style={{ touchAction: 'manipulation' }}

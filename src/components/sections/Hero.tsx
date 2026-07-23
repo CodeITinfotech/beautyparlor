@@ -57,7 +57,7 @@ export function Hero() {
   }, [isAutoPlaying]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden pt-20">
       {/* Image Slider */}
       <div 
         className="absolute inset-0"
@@ -73,34 +73,32 @@ export function Hero() {
             transition={{ duration: 1 }}
           >
             <div 
-              className="absolute inset-0 bg-cover bg-center transform scale-105"
-              style={{ 
-                backgroundImage: `url(${image.url})`,
-                transform: index === currentSlide ? 'scale(1.05)' : 'scale(1.1)'
-              }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${image.url})` }}
             />
             {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
           </motion.div>
         ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="container-custom px-4 pt-20">
+      <div className="relative z-10 min-h-[calc(100vh-5rem)] flex items-center">
+        <div className="container-custom px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="mb-6"
           >
-            <span className="inline-flex items-center gap-2 px-6 py-2 bg-[#C58A73]/80 backdrop-blur-sm rounded-full text-white mb-8">
+            <span className="inline-flex items-center gap-2 px-6 py-2 bg-[#C58A73] rounded-full text-white">
               <Sparkles className="w-5 h-5" />
               <span className="font-medium">Welcome to {businessInfo.name}</span>
             </span>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 max-w-5xl mx-auto leading-tight"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 max-w-5xl mx-auto leading-tight"
             style={{ fontFamily: 'Playfair Display, serif' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,22 +109,22 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto"
+            className="text-base md:text-xl text-white/90 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Professional Bridal Makeup, Party Makeup, Hair Styling, Skin Care and Beauty Treatments in Pune's Premier Beauty Studio.
+            Professional Bridal Makeup, Party Makeup, Hair Styling, Skin Care & Beauty Treatments in Pune's Premier Beauty Studio.
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Link href="/contact#booking">
-              <Button size="lg" className="bg-gradient-to-r from-[#C58A73] to-[#D6B25E] text-white hover:shadow-lg hover:shadow-[#C58A73]/30">
+              <Button size="lg" className="bg-gradient-to-r from-[#C58A73] to-[#D6B25E] text-white hover:shadow-lg">
                 Book Appointment
               </Button>
             </Link>
@@ -141,18 +139,11 @@ export function Hero() {
                 <ArrowRight className="w-5 h-5" />
               </span>
             </Button>
-            <a href={`tel:${businessInfo.phone}`}>
-              <Button size="lg" variant="ghost" className="text-white hover:bg-white/20 border border-white/30">
-                <span className="flex items-center gap-2">
-                  📞 {businessInfo.phone}
-                </span>
-              </Button>
-            </a>
           </motion.div>
 
           {/* Stats */}
           <motion.div
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -163,9 +154,9 @@ export function Hero() {
               { number: '50+', label: 'Services' },
               { number: '4.9', label: 'Google Rating' },
             ].map((stat, index) => (
-              <div key={index} className="text-center bg-black/30 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-3xl md:text-4xl font-bold text-white">{stat.number}</div>
-                <div className="text-white/80 mt-1">{stat.label}</div>
+              <div key={index} className="text-center bg-black/30 backdrop-blur-sm rounded-xl p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{stat.number}</div>
+                <div className="text-white/80 text-xs sm:text-sm mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -175,44 +166,32 @@ export function Hero() {
       {/* Slider Controls */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-all"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-all"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-all"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-all"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {heroImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-[#D6B25E] w-8' : 'bg-white/50'
+            className={`h-2 rounded-full transition-all ${
+              index === currentSlide ? 'bg-[#D6B25E] w-6 sm:w-8' : 'bg-white/50 w-2'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        style={{ display: 'none' }}
-      >
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full mt-2" />
-        </div>
-      </motion.div>
     </section>
   );
 }

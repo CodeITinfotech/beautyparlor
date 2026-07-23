@@ -2,9 +2,22 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { galleryImages } from '@/data/testimonials';
-import { X, Sparkles, Scissors, Palette } from 'lucide-react';
+import { X } from 'lucide-react';
+
+const galleryImages = [
+  { id: 1, src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80', alt: 'Bridal Makeup', category: 'Bridal' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80', alt: 'Professional Makeup', category: 'Makeup' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80', alt: 'Party Look', category: 'Makeup' },
+  { id: 4, src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&q=80', alt: 'Hair Styling', category: 'Hair' },
+  { id: 5, src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80', alt: 'Nail Art Design', category: 'Nails' },
+  { id: 6, src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', alt: 'Facial Treatment', category: 'Studio' },
+  { id: 7, src: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80', alt: 'Bridal Hair', category: 'Bridal' },
+  { id: 8, src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80', alt: 'Eye Makeup', category: 'Makeup' },
+  { id: 9, src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80', alt: 'Hair Color', category: 'Hair' },
+  { id: 10, src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80', alt: 'Gel Nails', category: 'Nails' },
+  { id: 11, src: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80', alt: 'Salon Interior', category: 'Studio' },
+  { id: 12, src: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=800&q=80', alt: 'Engagement Makeup', category: 'Bridal' },
+];
 
 const categories = ['All', 'Bridal', 'Hair', 'Makeup', 'Nails', 'Studio'];
 
@@ -54,12 +67,11 @@ export default function GalleryPage() {
       {/* Gallery Grid */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="masonry-grid">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <AnimatePresence mode="popLayout">
               {filteredImages.map((image, index) => (
                 <motion.div
                   key={image.id}
-                  className="masonry-item"
                   layout
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -67,22 +79,20 @@ export default function GalleryPage() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <div
-                    className="relative overflow-hidden rounded-xl cursor-pointer group"
+                    className="relative overflow-hidden rounded-xl cursor-pointer group aspect-square"
                     onClick={() => setSelectedImage(image)}
                   >
-                    <div className="aspect-square bg-gradient-to-br from-[#C58A73] to-[#D6B25E] flex items-center justify-center">
-                      {image.category === 'Bridal' && <Sparkles className="w-16 h-16 text-white/30" />}
-                      {image.category === 'Hair' && <Scissors className="w-16 h-16 text-white/30" />}
-                      {image.category === 'Makeup' && <Sparkles className="w-16 h-16 text-white/30" />}
-                      {image.category === 'Nails' && <Palette className="w-16 h-16 text-white/30" />}
-                      {image.category === 'Studio' && <Sparkles className="w-16 h-16 text-white/30" />}
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <img 
+                      src={image.src} 
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                       <div className="text-white">
                         <span className="px-2 py-1 bg-[#C58A73] rounded text-xs mb-2 inline-block">
                           {image.category}
                         </span>
-                        <h4 className="font-semibold">{image.alt}</h4>
+                        <h4 className="font-semibold text-sm">{image.alt}</h4>
                       </div>
                     </div>
                   </div>
@@ -103,14 +113,14 @@ export default function GalleryPage() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="lightbox-overlay"
+            className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
-              className="relative max-w-4xl w-full mx-4"
+              className="relative max-w-4xl w-full"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -123,9 +133,11 @@ export default function GalleryPage() {
               >
                 <X className="w-8 h-8" />
               </button>
-              <div className="aspect-video bg-gradient-to-br from-[#C58A73] to-[#D6B25E] rounded-xl flex items-center justify-center">
-                <span className="text-white/50 text-xl">{selectedImage.alt}</span>
-              </div>
+              <img 
+                src={selectedImage.src} 
+                alt={selectedImage.alt}
+                className="w-full rounded-xl"
+              />
               <div className="mt-4 text-center text-white">
                 <span className="px-3 py-1 bg-[#C58A73] rounded-full text-sm mb-2 inline-block">
                   {selectedImage.category}
