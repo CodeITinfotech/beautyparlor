@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { ArrowRight } from 'lucide-react';
 
+const BASE_PATH = '/beautyparlor';
+
 export function ServicesPreview() {
   const featuredServices = services.slice(0, 6);
 
@@ -40,7 +42,7 @@ export function ServicesPreview() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Link href="/services">
+          <Link href={`${BASE_PATH}/services`}>
             <Button variant="outline" size="lg">
               <span className="flex items-center gap-2">
                 View All Services

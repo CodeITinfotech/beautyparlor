@@ -6,6 +6,8 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { businessInfo } from '@/data/business';
 
+const BASE_PATH = '/beautyparlor';
+
 // Beauty Parlour Logo Component
 function Logo({ isScrolled }: { isScrolled: boolean }) {
   const textColor = isScrolled ? 'text-[#C58A73]' : 'text-white';
@@ -14,12 +16,10 @@ function Logo({ isScrolled }: { isScrolled: boolean }) {
   return (
     <div className="flex items-center gap-3">
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={textColor}>
-        {/* Lipstick shape */}
         <rect x="18" y="8" width="12" height="20" rx="2" fill={accentColor} />
         <rect x="17" y="26" width="14" height="6" rx="1" fill={accentColor} />
         <rect x="16" y="31" width="16" height="8" rx="2" fill={isScrolled ? '#333' : '#fff'} />
         <path d="M21 8V4C21 2.89543 21.8954 2 23 2H25C26.1046 2 27 2.89543 27 4V8" stroke={accentColor} strokeWidth="2" />
-        {/* Sparkles */}
         <circle cx="10" cy="12" r="2" fill={accentColor} className="animate-pulse" />
         <circle cx="38" cy="18" r="1.5" fill={accentColor} className="animate-pulse" />
         <circle cx="12" cy="38" r="1.5" fill={accentColor} className="animate-pulse" />
@@ -40,13 +40,13 @@ function Logo({ isScrolled }: { isScrolled: boolean }) {
 }
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/bridal-packages', label: 'Bridal' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/testimonials', label: 'Reviews' },
-  { href: '/contact', label: 'Contact' },
+  { href: `${BASE_PATH}/`, label: 'Home' },
+  { href: `${BASE_PATH}/about`, label: 'About' },
+  { href: `${BASE_PATH}/services`, label: 'Services' },
+  { href: `${BASE_PATH}/bridal-packages`, label: 'Bridal' },
+  { href: `${BASE_PATH}/gallery`, label: 'Gallery' },
+  { href: `${BASE_PATH}/testimonials`, label: 'Reviews' },
+  { href: `${BASE_PATH}/contact`, label: 'Contact' },
 ];
 
 export function Navbar() {
@@ -75,7 +75,7 @@ export function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href={`${BASE_PATH}/`} className="flex items-center gap-2">
             <Logo isScrolled={true} />
           </Link>
 
@@ -137,8 +137,8 @@ export function Navbar() {
               <a href={`tel:${businessInfo.phone}`} className="w-full">
                 <Button className="w-full text-base py-3">📞 Call Now</Button>
               </a>
-              <a href={`https://wa.me/${businessInfo.whatsapp}`} className="w-full">
-                <Button variant="secondary" className="w-full text-base py-3">💬 WhatsApp</Button>
+              <a href={`${BASE_PATH}/contact#booking`} className="w-full">
+                <Button variant="secondary" className="w-full text-base py-3">📅 Book Appointment</Button>
               </a>
             </div>
           </div>

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Sparkles, MapPin, Phone, Mail, Clock, Star, Heart } from 'lucide-react';
 import { businessInfo } from '@/data/business';
 
+const BASE_PATH = '/beautyparlor';
+
 export function Footer() {
   return (
     <footer className="bg-[#333333] text-white">
@@ -49,12 +51,12 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               {[
-                { href: '/', label: 'Home' },
-                { href: '/about', label: 'About Us' },
-                { href: '/services', label: 'Services' },
-                { href: '/bridal-packages', label: 'Bridal Packages' },
-                { href: '/gallery', label: 'Gallery' },
-                { href: '/contact', label: 'Contact' },
+                { href: `${BASE_PATH}/`, label: 'Home' },
+                { href: `${BASE_PATH}/about`, label: 'About Us' },
+                { href: `${BASE_PATH}/services`, label: 'Services' },
+                { href: `${BASE_PATH}/bridal-packages`, label: 'Bridal Packages' },
+                { href: `${BASE_PATH}/gallery`, label: 'Gallery' },
+                { href: `${BASE_PATH}/contact`, label: 'Contact' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -118,10 +120,10 @@ export function Footer() {
               © {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-400 hover:text-[#D6B25E]">
+              <Link href={`${BASE_PATH}/privacy`} className="text-gray-400 hover:text-[#D6B25E]">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-[#D6B25E]">
+              <Link href={`${BASE_PATH}/terms`} className="text-gray-400 hover:text-[#D6B25E]">
                 Terms of Service
               </Link>
             </div>

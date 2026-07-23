@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/Button';
 import { testimonials } from '@/data/testimonials';
 import { ArrowRight, Star } from 'lucide-react';
 
+const BASE_PATH = '/beautyparlor';
+
 export function TestimonialsPreview() {
   const featuredTestimonials = testimonials.slice(0, 3);
 
@@ -59,7 +61,7 @@ export function TestimonialsPreview() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Link href="/testimonials">
+          <Link href={`${BASE_PATH}/testimonials`}>
             <Button variant="outline" size="lg">
               <span className="flex items-center gap-2">
                 View All Reviews

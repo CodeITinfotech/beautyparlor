@@ -6,6 +6,8 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight } from 'lucide-react';
 
+const BASE_PATH = '/beautyparlor';
+
 // Google Business photo + high quality beauty images
 const galleryImages = [
   { id: 1, src: 'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljAS6XzzEkNbjtdBuhAATkHrnfLzEiX1yvbRBn6kECDueSx_nPz9dQGG85vIv6HIAOuJkpKbCQMHSfsydrsbIoulDTK2OvFTBYHbw8Jc-HeM9MlFMRUpw-OktLXzGUh-xL74UZmkJ7jzwH=w600-h800-k-no', alt: 'Dazzle Beauty Parlour', isGoogle: true },
@@ -59,7 +61,7 @@ export function GalleryPreview() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Link href="/gallery">
+          <Link href={`${BASE_PATH}/gallery`}>
             <Button variant="secondary" size="lg">
               <span className="flex items-center gap-2">
                 View Full Gallery

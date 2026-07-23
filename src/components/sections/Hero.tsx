@@ -7,6 +7,8 @@ import { generateWhatsAppLink } from '@/lib/utils';
 import { Sparkles, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
+const BASE_PATH = '/beautyparlor';
+
 const heroImages = [
   {
     url: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80',
@@ -90,7 +92,7 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <Link href="/contact#booking">
+            <Link href={`${BASE_PATH}/contact#booking`}>
               <Button size="lg" className="bg-gradient-to-r from-[#C58A73] to-[#D6B25E] text-white hover:shadow-lg">
                 Book Appointment
               </Button>
