@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { businessInfo } from '@/data/business';
 import { generateWhatsAppLink } from '@/lib/utils';
@@ -33,7 +32,6 @@ const heroImages = [
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const handleWhatsApp = () => {
     const message = `Hello ${businessInfo.name}! I'm interested in your services and would like to book an appointment.`;
@@ -50,79 +48,48 @@ export function Hero() {
   };
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
-    
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, []);
 
   return (
     <section className="relative min-h-screen overflow-hidden pt-16 md:pt-20">
       {/* Image Slider */}
-      <div 
-        className="absolute inset-0"
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-      >
+      <div className="absolute inset-0">
         {heroImages.map((image, index) => (
-          <motion.div
+          <div
             key={index}
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: index === currentSlide ? 1 : 0 }}
-            transition={{ duration: 1 }}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${image.url})` }}
             />
-            {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* Content */}
       <div className="relative z-10 min-h-[calc(100vh-5rem)] flex items-center">
         <div className="container-custom px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <span className="inline-flex items-center gap-2 px-6 py-2 bg-[#C58A73] rounded-full text-white">
               <Sparkles className="w-5 h-5" />
               <span className="font-medium">Welcome to {businessInfo.name}</span>
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 max-w-5xl mx-auto leading-tight"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 max-w-5xl mx-auto leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
             Reveal Your Natural{' '}
             <span className="text-[#D6B25E]">Beauty</span> with Professional Makeup & Beauty Services
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="text-base md:text-xl text-white/90 mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          <p className="text-base md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Professional Bridal Makeup, Party Makeup, Hair Styling, Skin Care & Beauty Treatments in Pune's Premier Beauty Studio.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Link href="/contact#booking">
               <Button size="lg" className="bg-gradient-to-r from-[#C58A73] to-[#D6B25E] text-white hover:shadow-lg">
                 Book Appointment
@@ -139,15 +106,10 @@ export function Hero() {
                 <ArrowRight className="w-5 h-5" />
               </span>
             </Button>
-          </motion.div>
+          </div>
 
           {/* Stats */}
-          <motion.div
-            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto">
             {[
               { number: '10+', label: 'Years Experience' },
               { number: '5000+', label: 'Happy Clients' },
@@ -159,7 +121,7 @@ export function Hero() {
                 <div className="text-white/80 text-xs sm:text-sm mt-1">{stat.label}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
