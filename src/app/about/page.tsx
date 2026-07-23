@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
 import { businessInfo } from "@/data/business";
-import { Award, Heart, Sparkles, Users, Target, Eye } from "lucide-react";
+import { Award, Heart, Sparkles, Users, Target, Eye, BadgeCheck, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -37,13 +37,13 @@ export default function AboutPage() {
                 A Journey of Beauty & Excellence
               </h2>
               <p className="text-gray-600 mb-4">
-                Founded over a decade ago, {businessInfo.name} began as a small dream to create a space where everyone could feel beautiful and confident. What started as a modest studio has grown into one of the most trusted names in beauty services.
+                {businessInfo.name} is an experienced beauty parlour and makeup studio located in Wadgaon Sheri, Pune, near Nagar Road. What started as a small dream has grown into one of the most trusted names in beauty services in the area.
               </p>
               <p className="text-gray-600 mb-4">
-                Our founder, a certified makeup artist with a passion for bringing out the natural beauty in everyone, envisioned a studio where artistry meets hospitality. Today, we continue that legacy with every client who walks through our doors.
+                The services are executed with full hygiene and care, using branded products. Our skilled team ensures clients are satisfied with every beauty, hair, and makeup service.
               </p>
               <p className="text-gray-600">
-                With over 10 years of experience and thousands of happy clients, we have established ourselves as experts in bridal makeup, party styling, and comprehensive beauty treatments. Our commitment to using premium products and staying updated with the latest trends ensures you always receive the best.
+                With over 10 years of experience and thousands of happy clients, we have established ourselves as experts in bridal makeup, party styling, and comprehensive beauty treatments.
               </p>
             </div>
             <div className="relative">
@@ -59,8 +59,59 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Owner Section */}
       <section className="section-padding bg-[#F8E8EA]">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1 relative">
+              <div className="aspect-square bg-gradient-to-br from-[#C58A73] to-[#D6B25E] rounded-2xl flex items-center justify-center">
+                <Sparkles className="w-32 h-32 text-white" />
+              </div>
+              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
+                <BadgeCheck className="w-8 h-8 text-[#D6B25E]" />
+                <div>
+                  <div className="font-bold text-[#333333]">ABTC Member</div>
+                  <div className="text-sm text-gray-500">All India Beauty Therapy & Cosmetology</div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#C58A73] rounded-full text-sm font-medium mb-6">
+                <GraduationCap className="w-4 h-4" />
+                Our Founder
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#333333] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Mrs. Anuradha Nirali
+              </h2>
+              <p className="text-gray-600 mb-4">
+                Our owner Mrs. Anuradha Nirali is an experienced and highly skilled professional in the beauty field. She has been honoured with many certificates in the beauty and cosmetology industry.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 bg-white p-4 rounded-xl">
+                  <BadgeCheck className="w-6 h-6 text-[#D6B25E] flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-[#333333]">ABTC Member</div>
+                    <div className="text-sm text-gray-500">All India Beauty Therapy and Cosmetology India</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white p-4 rounded-xl">
+                  <GraduationCap className="w-6 h-6 text-[#C58A73] flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-[#333333]">Maharashtra State Boards</div>
+                    <div className="text-sm text-gray-500">Advance Diploma in Hair and Beauty</div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 mt-6 italic">
+                "One must visit this parlour for the best results."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
@@ -71,7 +122,7 @@ export default function AboutPage() {
                 Our Mission
               </h3>
               <p className="text-gray-600">
-                To provide exceptional beauty services that enhance natural beauty, boost confidence, and create memorable experiences. We are committed to using premium products, maintaining the highest hygiene standards, and delivering personalized care to every client.
+                To provide exceptional beauty services with full hygiene and care. We are committed to using branded/premium products, maintaining the highest standards, and delivering personalized beauty solutions to every client.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-lg">
@@ -82,7 +133,7 @@ export default function AboutPage() {
                 Our Vision
               </h3>
               <p className="text-gray-600">
-                To be the preferred destination for beauty services, known for our artistic excellence, innovative techniques, and warm hospitality. We aspire to inspire confidence and celebrate individuality through the art of beauty.
+                To be the preferred beauty destination in Pune, known for skilled work, artistic excellence, innovative techniques, and warm hospitality. We aspire to inspire confidence and celebrate individuality through the art of beauty.
               </p>
             </div>
           </div>
@@ -90,7 +141,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="section-padding">
+      <section className="section-padding bg-[#F8E8EA]">
         <div className="container-custom">
           <SectionHeading
             title="Our Core Values"
@@ -104,7 +155,7 @@ export default function AboutPage() {
               { icon: Sparkles, title: 'Innovation', desc: 'We stay updated with latest trends and techniques' },
             ].map((value, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#F8E8EA] flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
                   <value.icon className="w-8 h-8 text-[#C58A73]" />
                 </div>
                 <h4 className="text-xl font-bold text-[#333333] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
