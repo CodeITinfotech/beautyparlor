@@ -4,7 +4,7 @@ export const businessInfo: BusinessInfo = {
   name: 'Dazzle Beauty Parlour & Makeup Studio',
   tagline: 'Reveal Your Natural Beauty',
   description: 'Professional Bridal Makeup, Party Makeup, Hair Styling, Skin Care and Beauty Treatments in a luxurious setting.',
-  address: '123 Beauty Lane, Sector 15, Mumbai, Maharashtra 400001',
+  address: 'Suprabhat Society, First floor, Satav building, Lane No. 2, opposite bank of Baroda, Somnath Nagar, Wadgaon Sheri, Pune, Maharashtra 411014',
   phone: '+91 98765 43210',
   email: 'hello@dazzlebeauty.com',
   whatsapp: '919876543210',
@@ -21,5 +21,5 @@ export const businessInfo: BusinessInfo = {
     instagram: 'https://instagram.com/dazzlebeauty',
     facebook: 'https://facebook.com/dazzlebeauty',
   },
-  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin',
+  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.3559197587984!2d73.9429!3d18.5536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMzJzE1LjYiTiA3M8KwNTYnMzUuMCJF!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin',
 };
