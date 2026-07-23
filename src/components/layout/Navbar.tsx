@@ -30,20 +30,31 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+  }, [isOpen]);
+
+  const navColor = isScrolled || !isHero;
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHero
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
+        navColor
           ? 'bg-white/98 shadow-lg'
           : 'bg-transparent'
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2">
-            <Sparkles className={`w-8 h-8 ${isScrolled || !isHero ? 'text-[#C58A73]' : 'text-white'}`} />
+          <Link href="/" className="flex items-center gap-2 z-[9999]">
+            <Sparkles className={`w-8 h-8 ${navColor ? 'text-[#C58A73]' : 'text-white'}`} />
             <span 
-              className={`text-xl font-bold ${isScrolled || !isHero ? 'text-[#333333]' : 'text-white'}`}
+              className={`text-xl font-bold ${navColor ? 'text-[#333333]' : 'text-white'}`}
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               Dazzle
@@ -57,7 +68,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`font-medium transition-colors hover:text-[#D6B25E] ${
-                  isScrolled || !isHero ? 'text-[#333333]' : 'text-white'
+                  navColor ? 'text-[#333333]' : 'text-white'
                 }`}
               >
                 {link.label}
@@ -67,48 +78,55 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-4">
             <a href={`tel:${businessInfo.phone}`}>
-              <Button variant={isScrolled || !isHero ? 'outline' : 'secondary'} size="sm">
+              <Button variant={navColor ? 'outline' : 'secondary'} size="sm">
                 Call Now
               </Button>
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Always visible */}
           <button
-            className="lg:hidden p-2"
+            className={`lg:hidden p-2 z-[9999] relative ${
+              navColor ? 'text-[#333333]' : 'text-white'
+            }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            style={{ touchAction: 'manipulation' }}
           >
             {isOpen ? (
-              <X className={isScrolled || !isHero ? 'text-[#333333]' : 'text-white'} />
+              <X className="w-6 h-6" />
             ) : (
-              <Menu className={isScrolled || !isHero ? 'text-[#333333]' : 'text-white'} />
+              <Menu className="w-6 h-6" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl transition-all duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`lg:hidden fixed inset-0 top-20 bg-white transition-all duration-300 ${
+          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
+        style={{ zIndex: 9998 }}
       >
-        <div className="container-custom py-6">
+        <div className="container-custom py-8">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#333333] font-medium py-2 hover:text-[#D6B25E] transition-colors"
+                className="text-[#333333] font-medium py-3 text-lg hover:text-[#D6B25E] transition-colors border-b border-gray-100"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="flex flex-col gap-3 pt-4 border-t">
-              <a href={`tel:${businessInfo.phone}`}>
-                <Button className="w-full">Call Now</Button>
+            <div className="flex flex-col gap-3 pt-6">
+              <a href={`tel:${businessInfo.phone}`} className="w-full">
+                <Button className="w-full text-lg py-4">Call Now</Button>
+              </a>
+              <a href={`https://wa.me/${businessInfo.whatsapp}`} className="w-full">
+                <Button variant="secondary" className="w-full text-lg py-4">WhatsApp</Button>
               </a>
             </div>
           </div>
