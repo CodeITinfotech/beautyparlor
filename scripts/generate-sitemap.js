@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseUrl = 'https://codeitinfotech.io/beautyparlor';
+const baseUrl = 'https://codeitinfotech.github.io/beautyparlor';
 
 const routes = [
   '',
