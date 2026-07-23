@@ -14,10 +14,10 @@ import {
   MessageCircle,
   Send,
   CheckCircle,
-  Instagram,
-  Facebook,
   Navigation,
   Car,
+  InstagramIcon,
+  FacebookIcon,
 } from 'lucide-react';
 import { generateWhatsAppLink, generateEmailLink, generateAppointmentEmailBody } from '@/lib/utils';
 
@@ -152,11 +152,11 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-4">
             <a href={businessInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:shadow-lg transition-shadow">
-              <Instagram className="w-5 h-5" />
+              <InstagramIcon className="w-5 h-5" />
               <span className="font-medium">Instagram</span>
             </a>
             <a href={businessInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[#1877F2] text-white rounded-full hover:shadow-lg transition-shadow">
-              <Facebook className="w-5 h-5" />
+              <FacebookIcon className="w-5 h-5" />
               <span className="font-medium">Facebook</span>
             </a>
           </div>
