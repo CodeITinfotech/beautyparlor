@@ -7,7 +7,7 @@ import { businessInfo } from "@/data/business";
 import { localBusinessSchema, faqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://codeitinfotech.github.io/dazzle-beauty'),
+  metadataBase: new URL('https://codeitinfotech.io/beautyparlor'),
   title: {
     default: `${businessInfo.name} | Professional Beauty Services & Bridal Makeup`,
     template: `%s | ${businessInfo.name}`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://codeitinfotech.github.io/dazzle-beauty',
+    url: 'https://codeitinfotech.io/beautyparlor',
     siteName: businessInfo.name,
     title: `${businessInfo.name} | Professional Beauty Services & Bridal Makeup`,
     description: businessInfo.description,
