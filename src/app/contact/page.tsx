@@ -14,7 +14,10 @@ import {
   MessageCircle,
   Send,
   CheckCircle,
-  AlertCircle,
+  Instagram,
+  Facebook,
+  Navigation,
+  Car,
 } from 'lucide-react';
 import { generateWhatsAppLink, generateEmailLink, generateAppointmentEmailBody } from '@/lib/utils';
 
@@ -86,6 +89,11 @@ export default function ContactPage() {
     }
   };
 
+  const getDirectionsUrl = (fromLocation: string) => {
+    const encodedFrom = encodeURIComponent(fromLocation);
+    return `https://www.google.com/maps/dir/${encodedFrom}/Dazzle+Beauty+Parlour+Wadgaon+Sheri+Pune`;
+  };
+
   return (
     <>
       {/* Hero */}
@@ -100,10 +108,65 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Contact Options */}
+      <section className="py-12 bg-[#F8E8EA]">
+        <div className="container-custom">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href={`tel:${businessInfo.phone}`} className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#C58A73] to-[#D6B25E] flex items-center justify-center mb-3">
+                <Phone className="w-7 h-7 text-white" />
+              </div>
+              <span className="font-semibold text-[#333333]">Call Us</span>
+              <span className="text-sm text-gray-500">{businessInfo.phone}</span>
+            </a>
+            
+            <a href={generateWhatsAppLink('')} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center mb-3">
+                <MessageCircle className="w-7 h-7 text-white" />
+              </div>
+              <span className="font-semibold text-[#333333]">WhatsApp</span>
+              <span className="text-sm text-gray-500">Chat with us</span>
+            </a>
+            
+            <a href={`mailto:${businessInfo.email}`} className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-[#333333] flex items-center justify-center mb-3">
+                <Mail className="w-7 h-7 text-white" />
+              </div>
+              <span className="font-semibold text-[#333333]">Email</span>
+              <span className="text-sm text-gray-500">{businessInfo.email}</span>
+            </a>
+            
+            <a href={businessInfo.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-[#4285F4] flex items-center justify-center mb-3">
+                <Navigation className="w-7 h-7 text-white" />
+              </div>
+              <span className="font-semibold text-[#333333]">Get Directions</span>
+              <span className="text-sm text-gray-500">Find us on map</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media */}
+      <section className="py-8 bg-white">
+        <div className="container-custom">
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href={businessInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:shadow-lg transition-shadow">
+              <Instagram className="w-5 h-5" />
+              <span className="font-medium">Instagram</span>
+            </a>
+            <a href={businessInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[#1877F2] text-white rounded-full hover:shadow-lg transition-shadow">
+              <Facebook className="w-5 h-5" />
+              <span className="font-medium">Facebook</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="booking" className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
+            {/* Left Column - Contact Info & Map */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -168,8 +231,53 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Find Distance Section */}
+              <div className="bg-gradient-to-br from-[#C58A73] to-[#D6B25E] rounded-2xl p-6 text-white mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Car className="w-8 h-8" />
+                  <h3 className="text-xl font-bold">Find Distance from Your Location</h3>
+                </div>
+                <p className="text-white/90 mb-4">Enter your location in Pune to get directions to our studio:</p>
+                <div className="bg-white rounded-xl p-4">
+                  <div className="space-y-3">
+                    <a href={getDirectionsUrl('Khadki')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Khadki (Khadki Railway Station)</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Shivaji Nagar')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Shivaji Nagar</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Koregaon Park')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Koregaon Park</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Viman Nagar')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Viman Nagar</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Kalyani Nagar')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Kalyani Nagar</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Hadapsar')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Hadapsar</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Wagholi')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Wagholi</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                    <a href={getDirectionsUrl('Lohegaon')} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <span className="text-[#333333]">Lohegaon</span>
+                      <Navigation className="w-5 h-5 text-[#C58A73]" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               {/* Map */}
-              <div className="rounded-xl overflow-hidden h-72">
+              <div className="rounded-xl overflow-hidden h-72 shadow-lg">
                 <iframe
                   src={businessInfo.mapEmbed}
                   width="100%"
@@ -188,11 +296,11 @@ export default function ContactPage() {
                 className="mt-4 inline-flex items-center gap-2 text-[#C58A73] hover:text-[#D6B25E] font-medium"
               >
                 <MapPin className="w-5 h-5" />
-                Get Directions on Google Maps
+                Get Full Directions on Google Maps
               </a>
             </motion.div>
 
-            {/* Booking Form */}
+            {/* Right Column - Booking Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
