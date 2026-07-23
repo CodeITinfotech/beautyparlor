@@ -169,7 +169,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="rounded-xl overflow-hidden h-64">
+              <div className="rounded-xl overflow-hidden h-72">
                 <iframe
                   src={businessInfo.mapEmbed}
                   width="100%"
@@ -181,6 +181,15 @@ export default function ContactPage() {
                   title="Location Map"
                 />
               </div>
+              <a
+                href={businessInfo.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-[#C58A73] hover:text-[#D6B25E] font-medium"
+              >
+                <MapPin className="w-5 h-5" />
+                Get Directions on Google Maps
+              </a>
             </motion.div>
 
             {/* Booking Form */}

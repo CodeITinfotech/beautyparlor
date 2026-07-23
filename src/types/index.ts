@@ -51,6 +51,7 @@ export interface BusinessInfo {
     twitter?: string;
   };
   mapEmbed: string;
+  googleMapsUrl?: string;
 }
 
 export interface FAQ {

@@ -4,19 +4,21 @@ import { MessageCircle, Phone, Calendar } from 'lucide-react';
 import { businessInfo } from '@/data/business';
 import { generateWhatsAppLink } from '@/lib/utils';
 
+const BASE_PATH = '/beautyparlor';
+
 export function FloatingButtons() {
   const handleWhatsApp = () => {
-    const message = `Hello ${businessInfo.name}! I'm interested in your services.`;
+    const message = `Hello ${businessInfo.name}! I'm interested in your services and would like to book an appointment.`;
     const link = generateWhatsAppLink(message);
     window.open(link, '_blank');
   };
 
   const handleCall = () => {
-    window.location.href = `tel:${businessInfo.phone}`;
+    window.location.href = `tel:${businessInfo.whatsapp}`;
   };
 
   const handleBook = () => {
-    window.location.href = '/contact#booking';
+    window.location.href = `${BASE_PATH}/contact#booking`;
   };
 
   return (
