@@ -71,12 +71,11 @@ export function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 bg-white shadow-lg`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-[9999] bg-white shadow-lg">
       <div className="container-custom">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 z-[9999]">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
             <Logo isScrolled={true} />
           </Link>
 
@@ -101,12 +100,13 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button - Always visible */}
+          {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 z-[9999] relative text-[#333333]"
+            id="mobile-menu-btn"
+            className="lg:hidden p-2 text-[#333333] relative"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            style={{ touchAction: 'manipulation' }}
+            aria-expanded={isOpen}
           >
             {isOpen ? (
               <X className="w-6 h-6" />
@@ -118,35 +118,32 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div
-        className={`lg:hidden fixed inset-0 top-20 bg-white transition-all duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-        }`}
-        style={{ zIndex: 9998 }}
-      >
-        <div className="container-custom py-8">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#333333] font-medium py-3 text-lg hover:text-[#D6B25E] transition-colors border-b border-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 top-16 bg-white z-[9998] overflow-y-auto">
+          <div className="container-custom py-6">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[#333333] font-medium py-3 text-lg hover:text-[#D6B25E] transition-colors border-b border-gray-100 block"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
             <div className="flex flex-col gap-3 pt-6">
               <a href={`tel:${businessInfo.phone}`} className="w-full">
-                <Button className="w-full text-lg py-4">Call Now</Button>
+                <Button className="w-full text-base py-3">📞 Call Now</Button>
               </a>
               <a href={`https://wa.me/${businessInfo.whatsapp}`} className="w-full">
-                <Button variant="secondary" className="w-full text-lg py-4">WhatsApp</Button>
+                <Button variant="secondary" className="w-full text-base py-3">💬 WhatsApp</Button>
               </a>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

@@ -57,7 +57,7 @@ export function Hero() {
   }, [isAutoPlaying]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden pt-20">
+    <section className="relative min-h-screen overflow-hidden pt-16 md:pt-20">
       {/* Image Slider */}
       <div 
         className="absolute inset-0"
