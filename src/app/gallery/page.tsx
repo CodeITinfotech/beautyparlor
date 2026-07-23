@@ -4,40 +4,20 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
-// Photos from Google Business Listing
-const googlePhotos = [
-  'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljAS6XzzEkNbjtdBuhAATkHrnfLzEiX1yvbRBn6kECDueSx_nPz9dQGG85vIv6HIAOuJkpKbCQMHSfsydrsbIoulDTK2OvFTBYHbw8Jc-HeM9MlFMRUpw-OktLXzGUh-xL74UZmkJ7jzwH=w800-h1200-k-no',
-  'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljAS6XzzEkNbjtdBuhAATkHrnfLzEiX1yvbRBn6kECDueSx_nPz9dQGG85vIv6HIAOuJkpKbCQMHSfsydrsbIoulDTK2OvFTBYHbw8Jc-HeM9MlFMRUpw-OktLXzGUh-xL74UZmkJ7jzwH=w600-h800-k-no',
-  'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljAS6XzzEkNbjtdBuhAATkHrnfLzEiX1yvbRBn6kECDueSx_nPz9dQGG85vIv6HIAOuJkpKbCQMHSfsydrsbIoulDTK2OvFTBYHbw8Jc-HeM9MlFMRUpw-OktLXzGUh-xL74UZmkJ7jzwH=w600-h800-k-no',
-];
-
-// Fallback high-quality beauty images
-const fallbackImages = [
-  'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80',
-  'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80',
-  'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80',
-  'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&q=80',
-  'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80',
-  'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
-  'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80',
-  'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',
-  'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80',
-  'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=800&q=80',
-];
-
+// High-quality beauty parlour images representing the studio services
 const galleryImages = [
-  { id: 1, src: googlePhotos[0] || fallbackImages[0], alt: 'Dazzle Beauty Parlour', category: 'Studio', isGoogle: true },
-  { id: 2, src: fallbackImages[1], alt: 'Professional Makeup', category: 'Makeup' },
-  { id: 3, src: fallbackImages[2], alt: 'Bridal Makeup Look', category: 'Bridal' },
-  { id: 4, src: fallbackImages[3], alt: 'Hair Styling', category: 'Hair' },
-  { id: 5, src: fallbackImages[4], alt: 'Nail Art Design', category: 'Nails' },
-  { id: 6, src: fallbackImages[5], alt: 'Facial Treatment', category: 'Skin' },
-  { id: 7, src: fallbackImages[6], alt: 'Bridal Hair Styling', category: 'Bridal' },
-  { id: 8, src: fallbackImages[7], alt: 'Eye Makeup', category: 'Makeup' },
-  { id: 9, src: fallbackImages[8], alt: 'Salon Interior', category: 'Studio' },
-  { id: 10, src: fallbackImages[9], alt: 'Party Makeup', category: 'Makeup' },
-  { id: 11, src: googlePhotos[1] || fallbackImages[0], alt: 'Beauty Services', category: 'Studio', isGoogle: true },
-  { id: 12, src: googlePhotos[2] || fallbackImages[2], alt: 'Bridal Look', category: 'Bridal', isGoogle: true },
+  { id: 1, src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80', alt: 'Dazzle Beauty Parlour Reception', category: 'Studio' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80', alt: 'Professional Bridal Makeup', category: 'Bridal' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80', alt: 'HD Makeup Look', category: 'Makeup' },
+  { id: 4, src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80', alt: 'Eye Makeup Detail', category: 'Makeup' },
+  { id: 5, src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&q=80', alt: 'Hair Styling Service', category: 'Hair' },
+  { id: 6, src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80', alt: 'Hair Color Treatment', category: 'Hair' },
+  { id: 7, src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80', alt: 'Luxury Manicure', category: 'Nails' },
+  { id: 8, src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80', alt: 'Gel Nail Art', category: 'Nails' },
+  { id: 9, src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', alt: 'Facial Treatment', category: 'Skin' },
+  { id: 10, src: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80', alt: 'Bridal Updo Hairstyle', category: 'Bridal' },
+  { id: 11, src: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=800&q=80', alt: 'Party Makeup Look', category: 'Makeup' },
+  { id: 12, src: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80', alt: 'Salon Interior', category: 'Studio' },
 ];
 
 const categories = ['All', 'Bridal', 'Hair', 'Makeup', 'Nails', 'Studio'];

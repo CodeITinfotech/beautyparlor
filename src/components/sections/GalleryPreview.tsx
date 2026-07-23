@@ -8,14 +8,14 @@ import { ArrowRight } from 'lucide-react';
 
 const BASE_PATH = '/beautyparlor';
 
-// Google Business photo + high quality beauty images
+// High quality beauty images
 const galleryImages = [
-  { id: 1, src: 'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWljAS6XzzEkNbjtdBuhAATkHrnfLzEiX1yvbRBn6kECDueSx_nPz9dQGG85vIv6HIAOuJkpKbCQMHSfsydrsbIoulDTK2OvFTBYHbw8Jc-HeM9MlFMRUpw-OktLXzGUh-xL74UZmkJ7jzwH=w600-h800-k-no', alt: 'Dazzle Beauty Parlour', isGoogle: true },
-  { id: 2, src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80', alt: 'Professional Makeup' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80', alt: 'Bridal Makeup' },
+  { id: 1, src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80', alt: 'Beauty Parlour' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80', alt: 'Bridal Makeup' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80', alt: 'Professional Makeup' },
   { id: 4, src: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80', alt: 'Hair Styling' },
-  { id: 5, src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80', alt: 'Nail Art Design' },
-  { id: 6, src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80', alt: 'Facial Treatment' },
+  { id: 5, src: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80', alt: 'Nail Art' },
+  { id: 6, src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80', alt: 'Facial' },
 ];
 
 export function GalleryPreview() {
