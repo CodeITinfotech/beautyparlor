@@ -115,9 +115,12 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-gray-700">
         <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
+            </p>
+            <p className="text-gray-400 text-sm">
+              Developed with love in Pune ❤️
             </p>
             <div className="flex gap-6 text-sm">
               <Link href={`${BASE_PATH}/privacy`} className="text-gray-400 hover:text-[#D6B25E]">
